@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HOME</title>
+</head>
+<body>
+<h1>JOIN</h1>
+<form th:action="@{/auth/join}" method="post" th:object="${addMemberRequest}">
+    <div th:if="${#fields.hasAnyErrors()}">
+        <div th:each="err:${#fields.allErrors()}" th:text="${err}"></div>
+    </div>
+    <input type="text" th:field="*{username}" placeholder="username">
+    <input type="password" th:field="*{password}" placeholder="password">
+    <input type="submit" value="회원가입">
+</form>
+</body>
+</html>

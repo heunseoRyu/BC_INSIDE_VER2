@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BC Inside</title>
+    <style>
+        .container {
+            display: flex;
+            align-items: center;
+        }
+        #title_h {
+            margin-right: 5px; /* 요소 간 간격 */
+        }
+        #title_p {
+            font-size: small
+        }
+
+    </style>
+    <link rel="stylesheet" th:href="@{/css/write.css}" />
+</head>
+<body>
+    <div class="container">
+        <h1 id="title_h">BC Inside</h1>
+        <p id="title_p">독서토의 커뮤니티</p>
+    </div>
+    <div sec:authorize="isAnonymous()">
+        <a href="/">홈</a>
+        <a href="/auth/login">로그인</a>
+        <a href="/auth/join">회원가입</a>
+    </div>
+    <div sec:authorize="isAuthenticated()">
+        <a href="/">홈</a>
+        <a href="/write">글 작성</a>
+        <a href="/auth/logout">로그아웃</a>
+        <!--        <a href="/members"><p sec:authentiacation="name"></p> 내 정보 보기</a>-->
+    </div>
+
+<div class="form-container">
+    <a th:href="@{/boards/{id}(id=${id})}">취소</a>
+    <h2>글 작성하기</h2>
+    <form th:action="@{/boards/edit/{id}(id=${id})}" method="post" th:object="${postBoardRequest}">
+        <div th:if="${#fields.hasAnyErrors()}">
+            <div th:each="err : ${#fields.allErrors()}" th:text="${err}"></div>
+        </div>
+        <div>
+            <label for="title">제목: </label>
+            <input th:field="*{title}" type="text" id="title" placeholder="제목" />
+        </div>
+        <div>
+            <label for="bookTitle">책이름: </label>
+            <input th:field="*{bookTitle}" type="text" id="bookTitle" placeholder="책이름" />
+            <input th:field="*{bookUrl}" type="text" placeholder="구매링크" />
+        </div>
+        <div>
+            <label for="content">내용:</label>
+            <textarea th:field="*{content}" id="content" placeholder="내용"></textarea>
+        </div>
+        <!-- 제출 버튼 -->
+        <button type="submit">업로드</button>
+    </form>
+</div>
+</body>
+</html>
