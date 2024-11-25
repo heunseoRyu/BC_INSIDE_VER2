@@ -1,0 +1,217 @@
+.container {
+    display: flex;
+    align-items: center;
+}
+#title_h {
+    margin-right: 5px; /* 요소 간 간격 */
+}
+#title_p {
+    font-size: small
+}
+
+.container {
+    display: flex;
+    align-items: center;
+}
+
+/* 전체 스타일 */
+.info-line {
+    font-size: 14px; /* 글자 크기 */
+    color: #555; /* 텍스트 색상 */
+    margin: 5px 0; /* 위아래 여백 */
+}
+
+.info-label {
+    font-weight: bold; /* 레이블을 두껍게 */
+    color: #333; /* 레이블 색상 */
+    margin-right: 5px; /* 레이블과 값 사이 여백 */
+}
+
+/* 제목 및 내용 스타일 */
+#title {
+    font-size: 24px; /* 제목 크기 */
+    color: #333; /* 제목 색상 */
+    margin-bottom: 10px; /* 아래 여백 */
+    border-bottom: 2px solid #4CAF50; /* 하단 테두리 */
+    padding-bottom: 5px; /* 하단 패딩 */
+}
+
+h5 {
+    margin-top: 20px; /* 위 여백 */
+    font-size: 18px; /* 소제목 크기 */
+    color: #333; /* 소제목 색상 */
+}
+
+/* 게시글 내용 스타일 */
+.board-content {
+    font-size: 16px; /* 내용 글자 크기 */
+    color: #333; /* 내용 색상 */
+    line-height: 1.5; /* 줄 간격 */
+    margin-top: 10px; /* 위 여백 */
+    padding: 15px; /* 내부 여백 */
+    border: 1px solid #dddddd; /* 테두리 설정 */
+    border-radius: 5px; /* 둥근 모서리 */
+    background-color: #f9f9f9; /* 배경색 설정 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+}
+
+.button-container {
+    display: flex; /* 플렉스 박스를 사용하여 정렬 */
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    margin-top: 10px; /* 필요에 따라 여백 추가 */
+}
+
+.button-container button {
+    margin-right: 10px; /* 버튼 간의 간격 조정 */
+}
+
+/* 마지막 버튼의 오른쪽 여백 제거 */
+.button-container button:last-child {
+    margin-right: 0;
+}
+
+button {
+    background-color: #4CAF50; /* 버튼 배경색 */
+    color: white; /* 글자색 */
+    border: none; /* 테두리 없음 */
+    padding: 10px 15px; /* 패딩 */
+    text-align: center; /* 텍스트 정렬 */
+    text-decoration: none; /* 링크 장식 없음 */
+    display: inline-block; /* 인라인 블록 */
+    font-size: 16px; /* 글자 크기 */
+    margin: 0 5px; /* 좌우 여백 */
+    cursor: pointer; /* 커서 변경 */
+    border-radius: 5px; /* 둥근 모서리 */
+    transition: background-color 0.3s; /* 배경색 전환 효과 */
+}
+
+/* 전체 폼 스타일 */
+form {
+    max-width: 600px; /* 폼의 최대 너비 설정 */
+    padding: 20px; /* 내부 여백 */
+    border: 1px solid #ccc; /* 테두리 */
+    border-radius: 8px; /* 모서리 둥글게 */
+    background-color: #f9f9f9; /* 배경색 */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+}
+
+/* 텍스트 에어리어 스타일 */
+textarea {
+    width: 100%; /* 전체 너비 사용 */
+    height: 100px; /* 높이 설정 */
+    padding: 10px; /* 내부 여백 */
+    border: 1px solid #ccc; /* 테두리 */
+    border-radius: 4px; /* 모서리 둥글게 */
+    resize: none; /* 크기 조절 비활성화 */
+    font-size: 16px; /* 글자 크기 */
+}
+
+/* 레이블 스타일 */
+label {
+    display: block; /* 블록 요소로 설정 */
+    margin-bottom: 5px; /* 아래 여백 */
+    font-weight: bold; /* 글자 두께 */
+}
+
+/* 버튼 스타일 */
+input[type="submit"] {
+    background-color: #4CAF50; /* 버튼 배경색 */
+    color: white; /* 글자 색 */
+    padding: 10px 15px; /* 내부 여백 */
+    border: none; /* 테두리 없음 */
+    border-radius: 4px; /* 모서리 둥글게 */
+    cursor: pointer; /* 커서 포인터로 변경 */
+    font-size: 16px; /* 글자 크기 */
+    transition: background-color 0.3s; /* 배경색 전환 효과 */
+}
+
+/* 버튼 호버 스타일 */
+input[type="submit"]:hover {
+    background-color: #45a049; /* 호버 시 배경색 */
+}
+
+/* 오류 메시지 스타일 */
+.error {
+    color: red; /* 오류 메시지 색 */
+    margin-top: 10px; /* 위쪽 여백 */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f0f0f0; /* 배경색 */
+}
+
+.chat {
+    list-style-type: none; /* 기본 리스트 스타일 제거 */
+    padding: 0;
+    max-width: 600px; /* 최대 너비 설정 */
+}
+
+.chat-message {
+    margin-bottom: 10px; /* 메시지 간 간격 */
+}
+
+.message {
+    background-color: #ffffff; /* 메시지 배경색 */
+    border-radius: 8px; /* 모서리 둥글게 */
+    padding: 10px; /* 내부 여백 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    position: relative; /* 위치 설정 */
+    display: inline-block; /* 인라인 블록으로 변경하여 높이 맞추기 */
+    max-width: 80%; /* 최대 너비 설정 */
+}
+
+.message strong {
+    color: #007BFF; /* 사용자 이름 색상 */
+    margin-right: 5px; /* 사용자 이름과 내용 간의 간격 */
+}
+
+.message span {
+    color: #333; /* 댓글 내용 색상 */
+    display: block; /* 블록 요소로 변경 */
+    margin-top: 5px; /* 위쪽 여백 */
+}
+
+/* 왼쪽 화살표 효과 */
+.chat-message:nth-child(odd) .message {
+    background-color: #e1ffc7; /* 짝수 메시지 배경색 */
+}
+
+.chat-message:nth-child(odd):before {
+    content: "";
+    position: absolute;
+    top: 10px; /* 위치 조정 */
+    left: -10px; /* 위치 조정 */
+    width: 0;
+    height: 0;
+    border: 10px solid transparent; /* 투명한 경계 */
+    border-right-color: #e1ffc7; /* 배경색과 동일하게 설정 */
+}
+
+/* 오른쪽 화살표 효과 */
+.chat-message:nth-child(even) .message {
+    background-color: #c7e1ff; /* 홀수 메시지 배경색 */
+}
+
+.chat-message:nth-child(even):before {
+    content: "";
+    position: absolute;
+    top: 10px; /* 위치 조정 */
+    right: -10px; /* 위치 조정 */
+    width: 0;
+    height: 0;
+    border: 10px solid transparent; /* 투명한 경계 */
+    border-left-color: #c7e1ff; /* 배경색과 동일하게 설정 */
+}
+
+.delete-button {
+    color: red; /* 삭제 버튼 색상 */
+    margin-left: 10px; /* 버튼과 댓글 내용 간의 간격 */
+    text-decoration: none; /* 밑줄 제거 */
+}
+
+.delete-button:hover {
+    text-decoration: underline; /* 호버 시 밑줄 추가 */
+    cursor: pointer; /* 커서 포인터로 변경 */
+}

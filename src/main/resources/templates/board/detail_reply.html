@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>BC inside</title>
-    <link rel="stylesheet" th:href="@{/css/detail.css}" />
+    <link rel="stylesheet" th:href="@{/css/detail_reply.css}" />
 </head>
 <body>
     <div class="container">
@@ -52,40 +52,40 @@
     <h5>내용</h5>
     <p class="board-content" th:text="${boardDetail.content}">Board Content</p>
 
-    <div sec:authorize="isAuthenticated()">
-        <a th:href="@{/boards/{id}/ai(id=${boardDetail.id})}">AI요약하기</a>
+    <a th:href="@{/boards/{id}(id=${boardDetail.id})}">댓글로 돌아가기</a>
 
-        <form th:action="@{/boards/{boardId}/comments(boardId=${boardDetail.id})}" method="post" th:object="${postCommentRequest}">
+    <div sec:authorize="isAuthenticated()">
+        <div class="chat-container">
+            <div class="comment-other">
+                <strong th:text="${comment.username}">사용자 이름</strong>:
+                <span th:text="${comment.content}">댓글 내용</span>
+                <a th:if="${#authentication.getPrincipal().getUsername() == comment.username} or ${isAdmin}"
+                   th:href="@{/boards/{boardId}/comments/{id}/delete(id=${comment.id},boardId=${boardDetail.id})}"
+                   class="delete-button"
+                   onclick="return confirm('정말로 이 댓글을 삭제하시겠습니까?');">삭제</a>
+            </div>
+
+        <form th:action="@{/boards/{boardId}/comments/{commentId}/reply(boardId=${boardDetail.id},commentId=${comment.id})}" method="post" th:object="${postCommentRequest}">
             <div th:if="${#fields.hasAnyErrors()}" class="error">
                 <div th:each="err : ${#fields.allErrors()}" th:text="${err}"></div>
             </div>
             <div>
                 <label for="content"></label><textarea th:field="*{content}" id="content" placeholder="내용"></textarea>
             </div>
-            <input type="submit" value="댓글 작성">
+            <input type="submit" value="답글 작성">
         </form>
-
-        <h2>댓글 목록</h2>
-
-        <div th:if="${comments != null}">
-            <ul class="chat">
-                <li th:each="comment : ${comments}" class="chat-message">
+            <ul class="chat-replies">
+                <li th:each="reply : ${replies}" class="reply me">
                     <div class="message">
-                        <strong th:text="${comment.username}">사용자 이름</strong>:
-                        <span th:text="${comment.content}">댓글 내용</span>
-                        <a th:if="${#authentication.getPrincipal().getUsername() == comment.username} or ${isAdmin}"
-                           th:href="@{/boards/{boardId}/comments/{id}/delete(id=${comment.id},boardId=${boardDetail.id})}"
+                        <strong th:text="${reply.username}">사용자 이름</strong>:
+                        <span th:text="${reply.content}">댓글 내용</span>
+                        <a th:if="${#authentication.getPrincipal().getUsername() == reply.username} or ${isAdmin}"
+                           th:href="@{/boards/{boardId}/replies/{id}/delete(id=${reply.id},boardId=${boardDetail.id})}"
                            class="delete-button"
                            onclick="return confirm('정말로 이 댓글을 삭제하시겠습니까?');">삭제</a>
-                        <a th:href="@{/boards/{boardId}/replies/{commentId}(boardId=${boardDetail.id},commentId=${comment.id})}">답글 보기</a>
                     </div>
                 </li>
             </ul>
-        </div>
-
-        <div th:if="${comments == null or #lists.isEmpty(comments)}">
-            <p>댓글이 없습니다.</p>
-        </div>
     </div>
 </body>
 </html>

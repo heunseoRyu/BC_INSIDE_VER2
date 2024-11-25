@@ -1,18 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-    <title>HOME</title>
+    <title>BC inside</title>
+
+    <style>
+        .container {
+            display: flex;
+            align-items: center;
+        }
+        #title_h {
+            margin-right: 5px; /* 요소 간 간격 */
+        }
+        #title_p {
+            font-size: small
+        }
+    </style>
 </head>
 <body>
-<h1>JOIN</h1>
-<form th:action="@{/auth/join}" method="post" th:object="${addMemberRequest}">
-    <div th:if="${#fields.hasAnyErrors()}">
-        <div th:each="err:${#fields.allErrors()}" th:text="${err}"></div>
+    <div class="container">
+        <h1 id="title_h">BC Inside</h1>
+        <p id="title_p">독서토의 커뮤니티</p>
     </div>
-    <input type="text" th:field="*{username}" placeholder="username">
-    <input type="password" th:field="*{password}" placeholder="password">
-    <input type="submit" value="회원가입">
-</form>
+    <a href="/">홈</a>
+    <h2>JOIN</h2>
+    <form th:action="@{/auth/join}" method="post" th:object="${addMemberRequest}">
+        <div th:if="${#fields.hasAnyErrors()}">
+            <div th:each="err:${#fields.allErrors()}" th:text="${err}"></div>
+        </div>
+        <input type="text" th:field="*{username}" placeholder="username">
+        <input type="password" th:field="*{password}" placeholder="password">
+        <input type="submit" value="회원가입">
+    </form>
 </body>
 </html>

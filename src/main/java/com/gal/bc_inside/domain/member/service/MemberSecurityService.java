@@ -27,6 +27,7 @@ public class MemberSecurityService implements UserDetailsService {
 
         List<GrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority(member.getAuthority().name()));
+        System.out.println(authorities);
 
         return new User(member.getUsername(), member.getPassword(), authorities);
     }

@@ -1,15 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-    <title>HOME</title>
+    <title>BC inside</title>
+
+    <style>
+        .container {
+            display: flex;
+            align-items: center;
+        }
+        #title_h {
+            margin-right: 5px; /* 요소 간 간격 */
+        }
+        #title_p {
+            font-size: small
+        }
+    </style>
 </head>
 <body>
-<h1>Login</h1>
-<form th:action="@{/auth/login}" method="post">
-    <input type="text" name="username" placeholder="username">
-    <input type="password" name="password" placeholder="password">
-    <input type="submit" value="로그인">
-</form>
+    <div class="container">
+        <h1 id="title_h">BC Inside</h1>
+        <p id="title_p">독서토의 커뮤니티</p>
+    </div>
+    <a href="/">홈</a>
+    <h2>Login</h2>
+    <form th:action="@{/auth/login}" method="post">
+        <input type="text" name="username" placeholder="username">
+        <input type="password" name="password" placeholder="password">
+        <input type="submit" value="로그인">
+    </form>
 </body>
 </html>
