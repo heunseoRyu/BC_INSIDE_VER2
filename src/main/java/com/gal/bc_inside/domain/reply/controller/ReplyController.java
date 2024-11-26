@@ -27,15 +27,19 @@ public class ReplyController {
     private final CommentService commentService;
 
     @PostMapping("/boards/{boardId}/comments/{commentId}/reply")
-    public String addReply(@PathVariable("commentId")Long commentId,@PathVariable("boardId")Long boardId, @Valid @ModelAttribute("postCommentRequest") PostCommentRequest request, BindingResult result, Principal principal) {
+    public String addReply(@PathVariable("commentId")Long commentId,@PathVariable("boardId")Long boardId, @Valid @ModelAttribute("postCommentRequest") PostCommentRequest request, BindingResult result, Principal principal,Model model) {
         if(result.hasErrors()) {
-            return "redirect:/boards/" + boardId + "/replies/" + commentId;
+            // 유효성 검사 실패 시
+            model.addAttribute("errorMessage", "입력값에 문제가 있습니다. \n 1. 댓글란을 입력한 후 '댓글 작성'을 눌러주세요 \n 2. 1~254이내로 적어주세요");
+            model.addAttribute("url", "/boards/" + boardId + "/replies/" + commentId); // 돌아갈 URL
+            return "/board/write_error";
         }
         try{
             replyService.postReply(boardId,commentId,request,principal);
         }catch(Exception e){
-            result.reject("error", e.getMessage()); // 에러 처리
-            return "redirect:/boards/" + boardId + "/replies/" + commentId;
+            model.addAttribute("errorMessage", "댓글 작성 중 문제가 발생했습니다: " + e.getMessage());
+            model.addAttribute("url", "/boards/" + boardId + "/replies/" + commentId); // 돌아갈 URL
+            return "/board/write_error";
         }
 
         return "redirect:/boards/" + boardId + "/replies/" + commentId;

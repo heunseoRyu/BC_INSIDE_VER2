@@ -37,16 +37,16 @@ public class Board {
     @Column(nullable = false, unique = true, updatable = false)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false,length = 256)
     private String title;
 
     @Column(nullable = false,length = 1001)
     private String content;
 
-    @Column(nullable = false)
+    @Column(nullable = false,length = 256)
     private String bookTitle;
 
-    @Column(nullable = false)
+    @Column(nullable = false,length = 256)
     private String bookUrl;
 
     @Column(nullable = false, updatable = false)

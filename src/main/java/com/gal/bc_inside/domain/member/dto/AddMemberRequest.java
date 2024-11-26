@@ -10,9 +10,10 @@ import lombok.Setter;
 public class AddMemberRequest {
 
     @NotEmpty(message = "username을 입력해주세요")
+    @Size(min=5, max=254, message = "username는 5자~254자로 설정해야 합니다")
     private String username;
 
     @NotEmpty(message = "password를 입력해주세요")
-    @Size(min=8, max=20, message = "password는 8자~20자로 설정해야 합니다")
+    @Size(min=5, max=20, message = "password는 5자~20자로 설정해야 합니다")
     private String password;
 }
